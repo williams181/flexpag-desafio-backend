@@ -1,10 +1,7 @@
 package com.flexpag.paymentscheduler.pagamento.model;
 
-import java.time.LocalDate;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
 import com.flexpag.paymentscheduler.pagamento.model.PagamentoDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,17 +18,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PagamentoDto {
 
-    private Long idImovel;
-
-    @NotNull
-    private String descricao;
-
-    @NotBlank(message = "O status do pagametento não pode ser vazio.")
-    private String statusPagamento;
-
-    @NotNull
-    private LocalDate validadePromocao;
+    private Long idPagamento;
 
     @NotNull
     private Double valorPagamento;
+    
+    @NotBlank(message = "O status do pagametento não pode ser vazio.")
+    private String statusPagamento;
+
 }

@@ -1,7 +1,5 @@
 package com.flexpag.paymentscheduler.pagamento.model;
 
-import java.time.LocalDate;
-
 import com.flexpag.paymentscheduler.pagamento.model.PagamentoDetalharDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,9 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PagamentoDetalharDto {
     
-    private Long idImovel;
-    private String descricao;
+    private Long idPagamento;
+    
     private Double valorPagamento;
-    private LocalDate dataAgendamento;
 
 }
