@@ -42,8 +42,7 @@ public class Pagamento {
     private Double valorPagamento;
     
     @Column(name = "STATUS_PAGAMENTO")
-    @Enumerated(EnumType.STRING)
-    private EnumStatusPagamento statusPagamento;
+    private Boolean statusPagamento;
 
     @ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
     @JoinColumn(name = "ID_PESSOA")

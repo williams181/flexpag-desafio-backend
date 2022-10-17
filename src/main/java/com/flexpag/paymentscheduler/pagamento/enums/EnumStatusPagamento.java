@@ -4,8 +4,9 @@ import lombok.Getter;
 
 public enum EnumStatusPagamento {
     
-    PAGO(1, "Pago"),
-    PENDENTE(2, "Pendente");
+    PENDENTE(1, "Pendente"),
+    PAGO(2, "Pago");
+    
 
     private EnumStatusPagamento(Integer codigo, String descricao) {
         this.codigo = codigo;

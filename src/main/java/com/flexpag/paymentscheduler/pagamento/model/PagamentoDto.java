@@ -20,10 +20,8 @@ public class PagamentoDto {
 
     private Long idPagamento;
 
-    @NotNull
     private Double valorPagamento;
     
-    @NotBlank(message = "O status do pagametento não pode ser vazio.")
-    private String statusPagamento;
+    private Boolean statusPagamento;
 
 }

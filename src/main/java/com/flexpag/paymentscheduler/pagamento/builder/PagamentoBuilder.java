@@ -18,9 +18,9 @@ public class PagamentoBuilder {
                 .build();
             }
 
-    public Pagamento builderModel(PagamentoDto pagamentoDto, EnumStatusPagamento statusPagamento){
+    public Pagamento builderModel(PagamentoDto pagamentoDto){
         return Pagamento.builder()
-        .statusPagamento(statusPagamento)
+        .statusPagamento(pagamentoDto.getStatusPagamento())
         .valorPagamento(pagamentoDto.getValorPagamento())
         .build();
     }

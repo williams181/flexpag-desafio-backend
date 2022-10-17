@@ -40,7 +40,7 @@ public class PagamentoService {
 
     @Transactional
     public PagamentoDto salvar(PagamentoDto pagamentoDto) {
-        var pagamento = builder.builderModel(pagamentoDto, EnumStatusPagamento.valueOf(pagamentoDto.getStatusPagamento()));
+        var pagamento = builder.builderModel(pagamentoDto);
         var pagamentoSalvo = builder.builderDto(repository.save(pagamento));
         return pagamentoSalvo;
     }
@@ -53,7 +53,7 @@ public class PagamentoService {
     @Transactional
     public PagamentoDto alterar(Long idPagamento, PagamentoDto pagamentoDto) {
         pagamentoDto.setIdPagamento(idPagamento);
-        var pagamento = builder.builderModel(pagamentoDto, EnumStatusPagamento.valueOf(pagamentoDto.getStatusPagamento()));
+        var pagamento = builder.builderModel(pagamentoDto);
         return builder.builderDto(repository.save(pagamento));
     }
 

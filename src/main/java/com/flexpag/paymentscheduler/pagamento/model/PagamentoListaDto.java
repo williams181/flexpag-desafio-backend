@@ -17,6 +17,6 @@ public class PagamentoListaDto {
     
     private Double valorPagamento;
     
-    private EnumStatusPagamento statusPagamento;
+    private boolean statusPagamento;
 
 }
