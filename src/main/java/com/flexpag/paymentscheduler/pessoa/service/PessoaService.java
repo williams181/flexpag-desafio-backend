@@ -2,12 +2,9 @@ package com.flexpag.paymentscheduler.pessoa.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.flexpag.paymentscheduler.pessoa.builder.PessoaBuilder;
 import com.flexpag.paymentscheduler.pessoa.model.PessoaDto;
 import com.flexpag.paymentscheduler.pessoa.repository.PessoaRepository;

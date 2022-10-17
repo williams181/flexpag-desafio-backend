@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.flexpag.paymentscheduler.pagamento.repository.PagamentoRepository;
 import com.flexpag.paymentscheduler.agendamento.builder.AgendamentoBuilder;
-import com.flexpag.paymentscheduler.agendamento.model.EnumStatusAgendamento;
+import com.flexpag.paymentscheduler.agendamento.enums.EnumStatusAgendamento;
 import com.flexpag.paymentscheduler.agendamento.model.Agendamento;
 import com.flexpag.paymentscheduler.agendamento.model.AgendamentoDto;
 import com.flexpag.paymentscheduler.agendamento.repository.AgendamentoRepository;
@@ -53,13 +53,8 @@ public class AgendamentoService {
 
     @Transactional
     public AgendamentoDto salvar(AgendamentoDto agendamentoDto) {
-
         var usuario = usuarioRepository.findById(agendamentoDto.getIdUsuarioFK()).orElseThrow();
-        var pagamento = pagamentoRepository.findById(agendamentoDto.getIdPagamentoFK()).orElseThrow();
-       
-
-        var agendamento = builder.builderModel(agendamentoDto, pagamento, usuario,
-                EnumStatusAgendamento.valueOf(agendamentoDto.getStatusAgendamento()));
+        var agendamento = builder.builderModel(agendamentoDto, usuario, EnumStatusAgendamento.valueOf(agendamentoDto.getStatusAgendamento()));
         var agendamentoSalvo = builder.builderDto(repository.save(agendamento));
         return agendamentoSalvo;
     }
@@ -71,19 +66,22 @@ public class AgendamentoService {
 
     @Transactional
     public AgendamentoDto alterar(Long idAgendamento, AgendamentoDto agendamentoDto) {
-        var usuario = usuarioRepository.findById(agendamentoDto.getIdUsuarioFK()).orElseThrow();
-        var pagamento = pagamentoRepository.findById(agendamentoDto.getIdPagamentoFK()).orElseThrow();
-        
+        var usuario = usuarioRepository.findById(agendamentoDto.getIdUsuarioFK()).orElseThrow();   
         agendamentoDto.setIdAgendamento(idAgendamento);
-        
-        var agendamento = builder.builderModel(agendamentoDto, pagamento, usuario,
-                EnumStatusAgendamento.valueOf(agendamentoDto.getStatusAgendamento()));
-        return builder.builderDto(repository.save(agendamento));
+        var agendamento = builder.builderModel(agendamentoDto, usuario, EnumStatusAgendamento.valueOf(agendamentoDto.getStatusAgendamento()));
+        if (agendamento.getStatusPagamento() == true)  {
+            return builder.builderDto(repository.save(agendamento));
+        } else {
+            return null;
+        }
     }
 
     @Transactional
     public void removerAgendamento(Long id) {
-        repository.deleteById(id);
+        var agendamento = repository.findById(id).orElseThrow();
+        if (agendamento.getStatusPagamento() == true)  {
+            repository.deleteById(id);
+        } 
     }
 
     public List<AgendamentoDto> retornaAgendamentoPorUsuarioEspecifico(Long id) {

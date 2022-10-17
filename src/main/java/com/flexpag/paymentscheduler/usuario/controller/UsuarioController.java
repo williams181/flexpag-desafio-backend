@@ -1,14 +1,7 @@
 package com.flexpag.paymentscheduler.usuario.controller;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,9 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.lowagie.text.DocumentException;
-
 import com.flexpag.paymentscheduler.exceptions.NegocioException;
 import com.flexpag.paymentscheduler.usuario.model.UsuarioDto;
 import com.flexpag.paymentscheduler.usuario.service.UsuarioService;
@@ -66,28 +56,5 @@ public class UsuarioController {
         service.removerUsuario(id);
         return ResponseEntity.noContent().build();
     }
-    
-    
-
-
-    @GetMapping(path="/pdf", produces="text/plain")
-    public void exportPdf( HttpServletResponse response) throws DocumentException, IOException{
-        response.setContentType("application/pdf");
-        DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy_HH:mm:ss");
-        String currentDateTime = dateFormatter.format(new Date());
-        
-        String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=usuarios-" + currentDateTime + ".pdf";
-        response.setHeader(headerKey, headerValue);
-        
-        List<UsuarioDto> usuariosDto = service.listarUsuarios();
-        
-        UsuarioService exporter = new UsuarioService(usuariosDto);
-        exporter.export(response);
-        
-        
-    }
-    
-    
     
 }

@@ -1,10 +1,7 @@
 package com.flexpag.paymentscheduler.pagamento.builder;
 
 import org.springframework.stereotype.Component;
-
-import com.flexpag.paymentscheduler.pagamento.enums.EnumStatusPagamento;
 import com.flexpag.paymentscheduler.pagamento.model.Pagamento;
-import com.flexpag.paymentscheduler.pagamento.model.PagamentoDetalharDto;
 import com.flexpag.paymentscheduler.pagamento.model.PagamentoDto;
 import com.flexpag.paymentscheduler.pagamento.model.PagamentoListaDto;
 
@@ -15,11 +12,13 @@ public class PagamentoBuilder {
         return PagamentoDto.builder()
                 .idPagamento(pagamento.getIdPagamento())
                 .valorPagamento(pagamento.getValorPagamento())
+                .statusPagamento(pagamento.getStatusPagamento())
                 .build();
             }
 
     public Pagamento builderModel(PagamentoDto pagamentoDto){
         return Pagamento.builder()
+        .idPagamento(pagamentoDto.getIdPagamento())
         .statusPagamento(pagamentoDto.getStatusPagamento())
         .valorPagamento(pagamentoDto.getValorPagamento())
         .build();

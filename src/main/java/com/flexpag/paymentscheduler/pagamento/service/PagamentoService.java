@@ -1,15 +1,11 @@
 package com.flexpag.paymentscheduler.pagamento.service;
 
-import java.awt.Color;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.flexpag.paymentscheduler.pagamento.builder.PagamentoBuilder;
-import com.flexpag.paymentscheduler.pagamento.enums.EnumStatusPagamento;
 import com.flexpag.paymentscheduler.pagamento.model.Pagamento;
 import com.flexpag.paymentscheduler.pagamento.model.PagamentoDto;
 import com.flexpag.paymentscheduler.pagamento.repository.PagamentoRepository;

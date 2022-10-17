@@ -1,11 +1,6 @@
 package com.flexpag.paymentscheduler.agendamento.controller;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.lowagie.text.DocumentException;
-import com.flexpag.paymentscheduler.agendamento.model.Agendamento;
 import com.flexpag.paymentscheduler.agendamento.model.AgendamentoDto;
 import com.flexpag.paymentscheduler.agendamento.service.AgendamentoService;
 
@@ -63,7 +56,7 @@ public class AgendamentoController {
 
     @DeleteMapping("/remover/{id}")
     public ResponseEntity<Void> removerAgendamentoPorId(@PathVariable Long id) throws Exception {
+        agendamentoService.removerAgendamento(id); 
         return ResponseEntity.ok().build();
     }
-
 }

@@ -1,7 +1,5 @@
 package com.flexpag.paymentscheduler.pagamento.model;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import com.flexpag.paymentscheduler.pagamento.model.PagamentoDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

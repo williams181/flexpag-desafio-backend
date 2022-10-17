@@ -1,11 +1,11 @@
-package com.flexpag.paymentscheduler.agendamento.model;
+package com.flexpag.paymentscheduler.agendamento.enums;
 
 import lombok.Getter;
 
 public enum EnumStatusAgendamento {
     
-    PENDENTE(1, "Pendente"),
-    PAGO(2, "Pago");
+    PENDENTE(1, "PENDENTE"),
+    PAGO(2, "PAGO");
 
     private EnumStatusAgendamento(Integer codigo, String descricao) {
         this.codigo = codigo;

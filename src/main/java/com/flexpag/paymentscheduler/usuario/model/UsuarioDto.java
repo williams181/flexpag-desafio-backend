@@ -1,18 +1,15 @@
 package com.flexpag.paymentscheduler.usuario.model;
 
+import lombok.Data;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-
 import org.hibernate.validator.constraints.Length;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import com.flexpag.paymentscheduler.usuario.model.UsuarioDto;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 @Data
 @Builder
