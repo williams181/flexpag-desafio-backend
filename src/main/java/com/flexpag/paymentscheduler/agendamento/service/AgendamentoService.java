@@ -67,7 +67,7 @@ public class AgendamentoService {
     @Transactional
     public AgendamentoDto alterar(Long idAgendamento, AgendamentoDto agendamentoDto) {
         var agendamento = repository.findById(idAgendamento).orElseThrow();
-        if (agendamento.getStatusPagamento() == false)  {
+        if (agendamento.getStatusAgendamento() == EnumStatusAgendamento.valueOf("PENDENTE"))  {
             agendamento.setDataAgendamento(agendamentoDto.getDataAgendamento());
             agendamento.setStatusPagamento(agendamentoDto.getStatusPagamento());
             agendamento.setStatusAgendamento((EnumStatusAgendamento) agendamentoDto.getStatusAgendamento());
@@ -80,7 +80,7 @@ public class AgendamentoService {
     @Transactional
     public void removerAgendamento(Long id) {
         var agendamento = repository.findById(id).orElseThrow();
-        if (agendamento.getStatusPagamento() == false)  {
+        if (agendamento.getStatusAgendamento() == EnumStatusAgendamento.valueOf("PENDENTE"))  {
             repository.deleteById(id);
         } 
     }
