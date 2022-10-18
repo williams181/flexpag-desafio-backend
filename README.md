@@ -89,6 +89,71 @@ spring:
 
 :information_source: _Sinta-se livre para incluir quaisquer observações que achar necessário_
 
+Recomendação: após executar o projeto, utilizar o swagger para visualização dos end points e testes dos metódos atráves do link: http://localhost:8080/swagger-ui/index.html#/
+
+1º criar usuário.
+
+POST
+
+http://localhost:8080/usuario/salvar
+
+{
+  "email": "exemplo@hotmail.com",
+  "senha": "123456789"
+}
+
+2º autenticação
+
+POST
+
+http://localhost:8080/auth/login
+
+{
+  "email": "exemplo@hotmail.com",
+  "senha": "123456789"
+}
+
+3º copiar Bearer toker e passar no authorization
+
+4º criar uma pessoa 
+
+POST
+
+http://localhost:8080/pessoa/salvar
+
+{
+  "cnpj": "000000-00000XXXXX",
+  "cpf": "000.000.000-00",
+  "data_nascimento": "2022-10-17",
+  "nome": "william",
+  "telefone": "99 9999 9999",
+  "usuario_id": 1
+}
+
+5º criar um agendamento
+
+POST
+
+http://localhost:8080/agendamento/salvar
+
+{
+  "dataAgendamento": "2022-10-17T19:19:30.440Z",
+  "statusPagamento": false,
+  "status_agendamento": "PENDENTE",
+  "usuario_id": 1,
+  "valorPagamento": 10
+}
+
+6º textar os metodos:
+
+PUT
+
+http://localhost:8080/agendamento/editar/1
+
+DELETE
+
+http://localhost:8080/agendamento/remover/1
+
 ---
 
 _O desafio acima foi cuidadosamente construído para propósitos de avaliação apenas._
