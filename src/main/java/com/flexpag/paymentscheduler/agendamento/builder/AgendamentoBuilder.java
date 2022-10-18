@@ -16,7 +16,7 @@ public class AgendamentoBuilder {
                 .statusPagamento(agendamento.getStatusPagamento())
                 .idUsuarioFK(agendamento.getIdUsuarioFK().getIdUsuario())
                 .dataAgendamento(agendamento.getDataAgendamento())
-                .statusAgendamento(agendamento.getStatusAgendamento().getDescricao())
+                .statusAgendamento(agendamento.getStatusAgendamento())
                 .build();
     }
 

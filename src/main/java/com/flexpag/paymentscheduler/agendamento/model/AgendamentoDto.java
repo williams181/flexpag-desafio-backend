@@ -1,5 +1,6 @@
 package com.flexpag.paymentscheduler.agendamento.model;
 
+import com.flexpag.paymentscheduler.agendamento.enums.EnumStatusAgendamento;
 import lombok.Data;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -34,5 +35,5 @@ public class AgendamentoDto {
 
     @NotNull(message = "O status do agendamento não pode ser vazio.")
     @JsonProperty(value = "status_agendamento")
-    private String statusAgendamento;
+    private EnumStatusAgendamento statusAgendamento;
 }
